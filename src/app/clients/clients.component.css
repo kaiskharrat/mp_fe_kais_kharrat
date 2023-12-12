@@ -1,0 +1,51 @@
+/* styles.css */
+
+#edit-client-container {
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    text-align: center;
+    margin: 20px;
+}
+
+#edit-client-container h1 {
+    font-size: 24px;
+    margin-bottom: 20px;
+    color: #333;
+}
+
+#edit-client-container table {
+    width: 100%;
+    margin-top: 20px;
+    border-collapse: collapse;
+}
+
+#edit-client-container td {
+    padding: 10px;
+    text-align: left;
+}
+
+#edit-client-container input[type="text"],
+#edit-client-container input[type="tel"] {
+    width: 100%;
+    padding: 8px;
+    box-sizing: border-box;
+    margin-top: 5px;
+}
+
+#edit-client-container input[type="submit"] {
+    padding: 10px 20px;
+    margin-top: 10px;
+    cursor: pointer;
+    border: none;
+    border-radius: 5px;
+    color: #fff;
+    background-color: #28a745; /* Green */
+    text-decoration: none;
+}
+
+#edit-client-container input[type="submit"]:disabled {
+    background-color: #ccc;
+    cursor: not-allowed;
+}

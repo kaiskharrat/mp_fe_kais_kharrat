@@ -1,0 +1,87 @@
+<div *ngIf="modeEdition==true" id="edit-client-container"> 
+  <h1> Modification Client </h1>
+  
+
+    <form #clientForm="ngForm" (ngSubmit)="validerFormulaire(clientForm)">
+        <table>   
+     <tr >
+        <td>  Id: </td>
+        <td>  <input id="id" name="id" type="text" [(ngModel)]="clientCourant.id"   required  readonly /></td>
+      </tr>
+      
+        <tr >
+          <td>  nom: </td>
+          <td>  <input type ="text"  name="nom"  [(ngModel)]="clientCourant.nom" required/> </td>
+        </tr>
+        <tr >
+          <td>  prenom: </td>
+          <td>  <input type ="text"  name="prenom"    [(ngModel)]="clientCourant.prenom" required/> </td>
+        </tr>
+        <tr >
+          <td>  adresse: </td>
+          <td>  <input type ="text"  name="adress"    [(ngModel)]="clientCourant.adress" required/> </td>
+        </tr>
+        <tr >
+          <td>  numero: </td>
+          <td>  <input type ="tel"  name="num"    [(ngModel)]="clientCourant.num" required/> </td>
+        </tr>
+        <tr >
+          <td [align]="'center'" colspan ="2">  
+          <input class="btn btn-success" type ="submit"  value="Valider"  [disabled]="!clientForm.form.valid" /> 
+          </td>
+        </tr>        
+   </table> 
+   </form>
+</div>
+<div>
+  <h1>Recherche Clients</h1>
+  <div class="row">
+    <div class="col-md-4">
+      <input type="text" class="form-control"  [(ngModel)]="nomRecherche" (ngModelChange)="rechercherNom()" placeholder="Nom">
+    </div>
+    <div class="col-md-4">
+      <input type="text" class="form-control" [(ngModel)]="prenomRecherche" (ngModelChange)="rechercherPre()"  placeholder="Prénom">
+    </div>
+    <div class="col-md-4">
+      <input type="tel" class="form-control"  name="num"  [(ngModel)]="numRecherche" (ngModelChange)="rechercherNum()" placeholder="Téléphone">
+    </div>
+  </div>
+</div>
+<div> 
+    <h1> liste des clients </h1>
+    
+       <table class="table table-hover table-bordered">
+      <thead class="thead-dark">
+        <tr>
+      <th scope="col"> Id </th> <th scope="col">nom</th><th scope="col">prenom</th><th scope="col">adresse</th><th scope="col">numero</th><th scope="col">Etat</th><th scope="col" colspan="3">Actions</th>
+    </tr>
+    </thead>
+    <tbody>
+       <tr *ngFor = "let p of clients">
+          <td>  {{p.id}}</td>
+         
+          <td>  {{p.nom}}</td>
+          <td>  {{p.prenom}}</td>
+          <td>  {{p.adress}}</td>
+          <td>  {{p.num}}</td>
+          <td>  {{p.etat}}</td>
+
+          <td>  
+            <button type="button" class="btn btn-success" (click) ="editerClient(p)">
+              Modifier
+            </button>
+          </td>
+          <td>  
+            <button type="button" class="btn btn-danger" (click) ="supprimerClient(p)" >
+              Supprimer
+            </button>
+          </td>  
+          <td>  
+            <button type="button" class="btn btn-dark" routerLink="/Factures" >
+              Factures de {{p.prenom}}
+            </button>
+          </td>         
+         </tr>
+      </tbody>
+     </table> 
+  </div>

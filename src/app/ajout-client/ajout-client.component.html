@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href=""> <!-- Link to your custom CSS file -->
+    <title>Your Page Title</title>
+    <!-- Add any other necessary meta tags, links, or stylesheets -->
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+
+        div {
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            text-align: center;
+        }
+
+        h1 {
+            color: #333;
+        }
+
+        table {
+            width: 100%;
+            margin-top: 20px;
+            border-collapse: collapse;
+        }
+
+        td {
+            padding: 10px;
+            text-align: left;
+        }
+
+        input[type="text"],
+        input[type="tel"] {
+            width: 100%;
+            padding: 8px;
+            box-sizing: border-box;
+            margin-top: 5px;
+        }
+
+        input[type="submit"],
+        button {
+            padding: 10px 20px;
+            margin-top: 10px;
+            cursor: pointer;
+            border: none;
+            border-radius: 5px;
+            color: #fff;
+            text-decoration: none;
+        }
+
+        input[type="submit"].btn-success {
+            background-color: #28a745; /* Green */
+        }
+
+        button.btn-danger {
+            background-color: #dc3545; /* Red */
+        }
+
+        input[type="submit"]:disabled {
+            background-color: #ccc;
+            cursor: not-allowed;
+        }
+    </style>
+</head>
+<body>
+
+<div> 
+    <h1> Ajouter Client </h1>
+  
+    <form #clientForm="ngForm" (ngSubmit)="validerFormulaire(clientForm)">
+        <table>   
+            <tr>
+                <td>nom:</td>
+                <td><input type="text" name="nom" [(ngModel)]="nouveauClient.nom" required/></td>
+            </tr>
+            <tr>
+                <td>prenom:</td>
+                <td><input type="text" name="prenom" [(ngModel)]="nouveauClient.prenom" required/></td>
+            </tr>
+            <tr>
+                <td>adresse:</td>
+                <td><input type="text" name="adress" [(ngModel)]="nouveauClient.adress" required/></td>
+            </tr>
+            <tr>
+                <td>numero:</td>
+                <td><input type="tel" name="num" [(ngModel)]="nouveauClient.num" required maxlength="8"/></td>
+            </tr>
+            <tr>
+                <td>etat:</td>
+                <td>
+                  <div [ngSwitch]="nouveauClient.etat">
+                    <input *ngSwitchCase="'active'" type="checkbox" name="etat" [(ngModel)]="nouveauClient.etat" (ngModelChange)="nouveauClient.etat = true">
+                    <input *ngSwitchCase="'inactive'" type="checkbox" name="etat" [(ngModel)]="nouveauClient.etat" (ngModelChange)="nouveauClient.etat = false">
+                    <input *ngSwitchDefault type="checkbox" name="etat" [(ngModel)]="nouveauClient.etat" (ngModelChange)="nouveauClient.etat = false">
+                  </div>
+                </td>
+              </tr>
+            <tr>
+                <td [align]="'center'" colspan="1">  
+                    <input type="submit" class="btn btn-success" value="Ajouter" [disabled]="!clientForm.form.valid" /> 
+                </td>
+                <td [align]="'center'" colspan="3">  
+                  <button class="btn btn-danger" (click)="clientForm.reset()">Effacer</button>
+              </td>
+            </tr>        
+        </table> 
+    </form>
+</div>
+
+</body>
+</html>

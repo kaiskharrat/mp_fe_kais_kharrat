@@ -1,0 +1,27 @@
+/* styles.css */
+
+/* Navbar styling */
+.navbar {
+    padding: 10px 0;
+}
+
+/* Brand styling */
+.navbar-brand {
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: #fff; /* Adjust the color as needed */
+}
+
+/* Navigation links styling */
+.navbar-nav a {
+    color: #fff;
+    text-decoration: none;
+    padding: 10px 20px;
+    display: block;
+    transition: background-color 0.3s ease;
+}
+
+.navbar-nav a:hover {
+    background-color: #fff; /* Adjust the color as needed */
+    color: #000; /* Adjust the color as needed */
+}
